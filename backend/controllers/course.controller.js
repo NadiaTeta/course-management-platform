@@ -24,6 +24,17 @@ exports.getCourses = async (req, res) => {
   }
 };
 
+exports.getCourseById = async (req, res) => {
+  try {
+    const course = await Course.findByPk(req.params.id);
+    if (!course) return res.status(404).json({ message: 'Course not found' });
+    res.json(course);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
 exports.getFacilitatorCourses = async (req, res) => {
   try {
     const facilitatorId = req.params.facilitatorId;
