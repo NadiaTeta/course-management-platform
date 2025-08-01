@@ -6,6 +6,7 @@ const Facilitator = require('./facilitator.model');
 const Cohort = require('./cohort.model');
 const Class = require('./class.model');
 const Mode = require('./mode.model');
+//const ActivityTracker = require('./activityTracker.model');
 
 const Allocation = sequelize.define('Allocation', {
   semester: {
@@ -23,5 +24,8 @@ Allocation.belongsTo(Course, { foreignKey: 'courseId' });
 Allocation.belongsTo(Cohort, { foreignKey: 'cohortId' });
 Allocation.belongsTo(Class, { foreignKey: 'classId' });
 Allocation.belongsTo(Mode, { foreignKey: 'modeId' });
+
+//Allocation.hasMany(ActivityTracker, { foreignKey: 'allocationId' });
+//ActivityTracker.belongsTo(Allocation, { foreignKey: 'allocationId' });
 
 module.exports = Allocation;

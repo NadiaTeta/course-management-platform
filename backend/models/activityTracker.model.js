@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const User = require('./user.model');
+const Allocation = require('./allocation.model')
 
 const ActivityTracker = sequelize.define('ActivityTracker', {
   allocationId: {
@@ -40,5 +41,8 @@ const ActivityTracker = sequelize.define('ActivityTracker', {
     defaultValue: 'Not Started'
   }
 });
+
+ActivityTracker.belongsTo(Allocation, { foreignKey: 'allocationId' });
+Allocation.hasMany(ActivityTracker, { foreignKey: 'allocationId' });
 
 module.exports = ActivityTracker;

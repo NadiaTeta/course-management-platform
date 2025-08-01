@@ -1,6 +1,7 @@
 const Allocation = require('../models/allocation.model');
 const Course = require('../models/course.model');
 const User = require('../models/user.model');
+const Mode = require('../models/mode.model')
 
 exports.assignCourse = async (req, res) => {
   const { courseId, facilitatorId, classId, cohortId, modeId, semester } = req.body;
@@ -45,7 +46,16 @@ exports.getFacilitatorCourses = async (req, res) => {
   const { facilitatorId } = req.params;
   const allocations = await Allocation.findAll({
     where: { facilitatorId },
-    include: [Course],
+    include: [
+      {
+          model: Course,
+          attributes: ['id', 'title', 'code', 'description'],
+        },
+        {
+          model: Mode,
+          attributes: ['name'],
+        }
+    ],
   });
   res.json(allocations);
 };

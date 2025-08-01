@@ -1,5 +1,8 @@
 const ActivityTracker = require('../models/activityTracker.model');
-const { redisClient } = require('../config/redis');
+//const redisClient = require('../config/redis');
+const { enqueueNotification } = require('../services/notification.service');
+const { Allocation, User, Course, Facilitator } = require('../models');
+
 
 // Create log
 exports.createLog = async (req, res) => {
@@ -10,6 +13,10 @@ exports.createLog = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+async function notifyManager(data) {
+  await enqueueNotification('notifications', data);
+}
 
 // Get all logs
 exports.getAllLogs = async (req, res) => {
@@ -32,6 +39,8 @@ exports.getLogsByAllocation = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+
 
 // Update a log
 exports.updateLog = async (req, res) => {
