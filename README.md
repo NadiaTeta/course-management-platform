@@ -29,36 +29,40 @@ npm run dev
 ### API Documentation
 Base URL: http://localhost:5000/api
 
-🔐 Auth Endpoints
+ Auth Endpoints
 ```sh
 Method	Endpoint	    Description	         Body / Params	                         Response Example
 POST	/auth/register	Register a new user	{ name, email, password, role }	          201 Created
 POST	/auth/login	    Login a user	      { username, password }	{ token, user }
 ```
-📘 Courses
+ Courses
+```sh
 Method	Endpoint	    Description
 GET	    /courses	    Get all courses
 POST	  /courses	    Create new course
 GET	    /courses/:id	Get course by ID
 PUT	    /courses/:id	Update course
 DELETE	/courses/:id	Delete course
+```
 
-🧮 Allocations
+ Allocations
+```sh
 Method	  Endpoint	      Description
 GET     /allocations	    Get all allocations
 POST	  /allocations	    Assign course to facilitator
 GET	    /allocations/:id	Get allocation by ID
 PUT	    /allocations/:id	Update allocation
 DELETE	/allocations/:id	Delete allocation
-
-📊 Activity Logs 
+```
+ Activity Logs 
+```sh
 Method	Endpoint                  Description
 GET	    /activities              	Manager: Get all activities
 POST	  /activities	              Facilitator:  Create activity log
 GET	    /activities/self	        Facilitator: View own logs
 PUT	    /activities/:id	          Facilitator: Update own log
 DELETE	/activities/:id	          Facilitator: Delete own log
-
+```
 Example request:
 
 {
