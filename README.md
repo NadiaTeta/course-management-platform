@@ -13,13 +13,13 @@ npm install
 ```
 PORT=5000
 
-# MySQL database
+### MySQL database
 DB_NAME=your_database
 DB_USER=your_user
 DB_PASS=your_password
 DB_HOST=localhost
 
-# JWT secrets
+### JWT secrets
 JWT_SECRET=your_jwt_secret
 JWT_EXPIRES_IN=1d
 ```sh
@@ -30,10 +30,11 @@ npm run dev
 Base URL: http://localhost:5000/api
 
 🔐 Auth Endpoints
+```sh
 Method	Endpoint	    Description	         Body / Params	                         Response Example
 POST	/auth/register	Register a new user	{ name, email, password, role }	          201 Created
 POST	/auth/login	    Login a user	      { username, password }	{ token, user }
-
+```
 📘 Courses
 Method	Endpoint	    Description
 GET	    /courses	    Get all courses
